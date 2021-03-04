@@ -17,9 +17,6 @@ jobs:
         run: |
           Test-Path pcfconfig.json
           echo "::set-output name=exists::$(Test-Path pcfconfig.json)"
-         
-      - run: echo "::set-env name=GIT_REDIRECT_STDERR::2>&1"
-        if: steps.checkpcfconfig.outputs.exists != 'True'
         
       - name: Use Node.js ${{ matrix.node-version }}
         if: steps.checkpcfconfig.outputs.exists != 'True'
